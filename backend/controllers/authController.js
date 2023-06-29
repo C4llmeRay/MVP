@@ -99,7 +99,37 @@ const updateUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+// Get current user
+const getCurrentUser = async (req, res) => {
+ let token = req.header('Authorization');
+  console.log(req.header('Authorization'))
+  // Check if token exists
+  if (!token) {
+    return res.status(401).json({ message: 'No token, authorization denied' });
+  }
 
+  try {
+    // Verify and decode the token
+    token= token.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user =await User.findById(decoded.userId)
+    res.status(200).json({user:user});
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ message: 'Token is not valid' });
+  }
+};
 
+// Logout user
+const logoutUser = async (req, res) => {
+  try {
+    req.session.destroy();
 
-module.exports = {getUserById, registerUser, loginUser, updateUser};
+    res.status(200).json({ message: 'Logout successful' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+module.exports = {getUserById, registerUser, loginUser, updateUser,getCurrentUser, logoutUser};

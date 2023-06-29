@@ -23,7 +23,7 @@ function Login() {
       
       setMessage('Login successful');
 
-      navigate('/');
+      navigate('/profile');
     } catch (error) {
       setMessage('Login failed. Please try again.');
 

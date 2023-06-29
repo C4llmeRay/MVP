@@ -3,11 +3,12 @@ import { getUserProfile } from '../api';
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
-
+  console.log('ok')
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
         const profile = await getUserProfile();
+        
         setProfileData(profile);
       } catch (error) {
         console.error('Error fetching user profile:', error);

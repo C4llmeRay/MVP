@@ -5,13 +5,16 @@ const User = require('../models/User');
 const AuthController = require('../controllers/authController')
 
 // Register a new user
+router.get('',  AuthController.getCurrentUser)
+
 router.post(
-  '/users/register',
+  '/register',
+
     AuthController.registerUser
 );
 
 // User login 
- router.post('/users/login', AuthController.loginUser
+ router.post('/login', AuthController.loginUser
 );
 
 // Get user by ID
@@ -19,6 +22,8 @@ router.get('/:id', AuthController.getUserById);
 
 // Update user by ID
 router.put('/:id', AuthController.updateUser);
+// Logout user
+router.post('/logout', AuthController.logoutUser);
 
 
 
