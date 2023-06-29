@@ -102,7 +102,6 @@ const updateUser = async (req, res) => {
 // Get current user
 const getCurrentUser = async (req, res) => {
  let token = req.header('Authorization');
-  console.log(req.header('Authorization'))
   // Check if token exists
   if (!token) {
     return res.status(401).json({ message: 'No token, authorization denied' });

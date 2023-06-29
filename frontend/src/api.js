@@ -26,7 +26,7 @@ export const loginUser = async (credentials) => {
 // Fetch all products
 export const getProducts = async () => {
   try {
-    const response = await axios.get("/products");
+    const response = await axios.get('/products');
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -72,6 +72,7 @@ export const deleteProductById = async (productId) => {
     throw error.response.data;
   }
 };
+
 export const getUserProfile = async () => {
   try {
     const token = getToken();

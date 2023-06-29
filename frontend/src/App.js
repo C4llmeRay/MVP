@@ -6,18 +6,23 @@ import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import Navbar from './components/Navbar';
+import Products from './components/Products';
+
 
 const App = () => {
   return (
     <Router>
       <div>
         <Header />
+        <Navbar/>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='**' element={<Navigate />}/>
+          <Route key='1' path="/" element={<Home />} />
+          <Route key='2' path="/register" element={<Register />} />
+          <Route key='3' path="/login" element={<Login />} />
+          <Route key='4' path='/profile' element={<Profile/>}/>
+          <Route key='5' path="/products" element={<Products/>} />
+          <Route key='°' path='**' element={<Navigate />} />
 
           {/* Add more routes for other components */}
         </Routes>
