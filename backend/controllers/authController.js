@@ -61,4 +61,45 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+// Get user by ID
+const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Update user by ID
+const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { name, email } = req.body;
+
+    // Find the user by ID and update the fields
+    const updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
+module.exports = {getUserById, registerUser, loginUser, updateUser};

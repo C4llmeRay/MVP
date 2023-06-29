@@ -22,13 +22,5 @@ exports.registerUser = async (req, res) => {
   }
 }
 
-// User login
-exports.loginUser = async (req, res) => {
-  try {
-    // TODO: Implement the logic for user login
-    res.json({ message: 'Login user controller' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
+
 
