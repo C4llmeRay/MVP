@@ -91,6 +91,47 @@ export const getUserProfile = async () => {
   }
 };
 
+// Fetch the user's cart
+export const getCart = async () => {
+  try {
+    const response = await axios.get('/carts', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+// Add an item to the cart
+export const addToCart = async (productId) => {
+  try {
+    const response = await axios.post(`/carts${productId}`, null, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+// Remove an item from the cart
+export const removeFromCart = async (productId) => {
+  try {
+    const response = await axios.delete(`/carts/remove/${productId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
 
 
 export default axios;

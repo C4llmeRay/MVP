@@ -1,0 +1,31 @@
+.product-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-image {
+    flex: 1;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.product-image img {
+    width: 125px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.product-details {
+    flex: 2;
+}
+
+.product-details h2 {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+}
+
+.product-details p {
+    font-size: 16px;
+}

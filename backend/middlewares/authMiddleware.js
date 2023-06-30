@@ -4,7 +4,6 @@ const User = require('../models/User');
 const authMiddleware = (req, res, next) => {
   // Get the token from the request headers
   let token = req.header('Authorization');
-  console.log(req.header('Authorization'))
   // Check if token exists
   if (!token) {
     return res.status(401).json({ message: 'No token, authorization denied' });

@@ -30,13 +30,14 @@ const getProductById = async (req, res) => {
 // Create a new product
 const createProduct = async (req, res) => {
   try {
-    const { name, description, price, category } = req.body;
+    const { name, description, price, category, image } = req.body;
 
     const newProduct = await Product.create({
       name,
       description,
       price,
-      category
+      category,
+      image
     });
 
     res.status(201).json({ message: 'Product created successfully', product: newProduct });
@@ -49,11 +50,11 @@ const createProduct = async (req, res) => {
 // Update a product by ID
 const updateProduct = async (req, res) => {
   try {
-    const { name, description, price } = req.body;
+    const { name, description, price, image } = req.body;
 
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
-      { name, description, price },
+      { name, description, price, image },
       { new: true }
     );
 
