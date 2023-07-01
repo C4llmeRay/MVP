@@ -17,6 +17,10 @@ router.post('/', productController.createProduct);
 // Get a single product by ID
 router.get('/:id', productController.getProductById);
 
+// GET /products/:category
+// Get products by category
+router.get('/category/:category', productController.getProductsByCategory);
+
 // PUT /products/:id
 // Update a product by ID
 router.put('/:id', productController.updateProduct);

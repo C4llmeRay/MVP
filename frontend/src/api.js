@@ -134,4 +134,17 @@ export const removeFromCart = async (productId) => {
 };
 
 
-export default axios;
+export const getProductsByCategory = async (category) => {
+  try {
+    const response = await axios.get(`/products/category/${category}`);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data);
+    } else {
+      throw new Error('Failed to fetch products by category');
+    }
+  }
+};
+
+

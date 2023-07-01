@@ -47,7 +47,7 @@ const Navbar = ({ cartItems }) => {
               <FaShoppingCart />
               {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount}</span>}
             </Link>
-            <Link to="/login" className="nav-link">
+            <Link to="/profile" className="nav-link">
               <FaUser />
             </Link>
           </div>
