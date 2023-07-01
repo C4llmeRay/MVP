@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '../api';
-import '../styles/ProductCard.css'
+import '../styles/ProductCard.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +9,6 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const data = await getProducts();
-        console.log(data)
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -23,14 +22,12 @@ const Products = () => {
     <div>
       <h2>Products</h2>
       {products.map((product) => (
-        <div className="product-card" key={product._id}>
-          <div className="product-details">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{product.category}</p>
-          </div>
-          <div className="product-image">
-          <img src={product.image} alt={product.title} />
+        <div className="card bg-dark text-white product-card" key={product._id}>
+          <img className="card-img" src={product.image} alt={product.title} />
+          <div className="card-img-overlay">
+            <h5 className="card-title">{product.name}</h5>
+            <p className="card-text">{product.description}</p>
+            <p className="card-text">Category: {product.category}</p>
           </div>
         </div>
       ))}
@@ -38,5 +35,5 @@ const Products = () => {
   );
 };
 
-
 export default Products;
+

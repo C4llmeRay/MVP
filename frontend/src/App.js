@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { Container } from 'react-bootstrap'; // Add this line
 
 
-import Header from './components/Header';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -18,7 +17,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Header />
         <Navbar/>
         <Container className="mb-4">
 

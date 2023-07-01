@@ -1,31 +1,24 @@
 .product-card {
-    display: flex;
-    align-items: center;
+    width: 300px;
     margin-bottom: 20px;
 }
 
-.product-image {
-    flex: 1;
-    width: 200px;
+.card-img {
     height: 200px;
-    margin-right: 20px;
-}
-
-.product-image img {
-    width: 125px;
-    height: 75px;
     object-fit: cover;
 }
 
-.product-details {
-    flex: 2;
+.card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
 }
 
-.product-details h2 {
-    font-size: 0.75rem;
-    margin-bottom: 10px;
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.product-details p {
-    font-size: 16px;
+.card-text {
+    font-size: 14px;
 }

@@ -1,10 +1,12 @@
 import React from 'react';
+import HomeCarousel from './HomeCarousel';
+import Products from './Products';
 
 const Home = () => {
   return (
     <div>
-      <h2>Welcome to My App!</h2>
-      {/* Add any additional content or functionality */}
+      <HomeCarousel />
+      <Products />
     </div>
   );
 };
