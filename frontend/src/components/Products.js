@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api';
+import ProductCard from './ProductCard';
 import '../styles/ProductCard.css';
 
 const Product = () => {
@@ -46,35 +47,6 @@ const Product = () => {
     return acc;
   }, {});
 
-  const renderProducts = (products) => {
-    if (products.length <= 3) {
-      return products.map((product) => (
-        <div className="card bg-dark text-white product-card mx-2 my-2" key={product._id}>
-          <img className="card-img" src={product.image} alt={product.title} />
-          <div className="card-img-overlay">
-            <h5 className="card-title">{product.name}</h5>
-            <p className="card-text">{product.description}</p>
-            <p className="card-text">Category: {product.category}</p>
-            <p className="card-text">Price: {product.price}</p>
-          </div>
-        </div>
-      ));
-    } else {
-      const limitedProducts = products.slice(0, 3);
-      return limitedProducts.map((product) => (
-        <div className="card bg-dark text-white product-card mx-2 my-2" key={product._id}>
-          <img className="card-img" src={product.image} alt={product.title} />
-          <div className="card-img-overlay">
-            <h5 className="card-title">{product.name}</h5>
-            <p className="card-text">{product.description}</p>
-            <p className="card-text">Category: {product.category}</p>
-            <p className="card-text">Price: {product.price}</p>
-          </div>
-        </div>
-      ));
-    }
-  };
-
   return (
     <div>
       <h2>Products</h2>
@@ -93,7 +65,11 @@ const Product = () => {
       {Object.entries(groupedProducts).map(([category, products]) => (
         <div key={category}>
           <h3>{category}</h3>
-          <div className="d-flex flex-wrap">{renderProducts(products)}</div>
+          <div className="d-flex flex-wrap">
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
           <Link to={`/category/${category}`} className="btn btn-primary mt-2">
             View All {category} Products
           </Link>
@@ -104,6 +80,9 @@ const Product = () => {
 };
 
 export default Product;
+
+
+
 
 
 

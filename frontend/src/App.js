@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import './styles/App.css'
 
 import Home from './components/Home';
 import Register from './components/Register';
@@ -8,26 +9,33 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import Products from './components/Products';
-import Cart from './components/Cart';
 import Category from './components/Category';
+import CartContainer from './components/CartContainer';
+import ProductDetails from './components/ProductDetails';
+import Footer from './components/Footer';
+import Checkout from './components/Chekout';
+
 
 const App = () => {
   return (
-    <Router>
-      <div>
+    <Router>     
+      <div className="page-wrapper">
         <Navbar />
         <Container className="mb-4">
           <Routes>
-            <Route key='1' path="/" element={<Home />} />
-            <Route key='2' path="/register" element={<Register />} />
-            <Route key='3' path="/login" element={<Login />} />
-            <Route key='4' path='/profile' element={<Profile />} />
-            <Route key='5' path="/products" element={<Products />} />
-            <Route key='6' path='/*' element={<Navigate to="/" />} />
-            <Route key='7' path="/cart" element={<Cart />} />
-            <Route key='8' path="/category/:category" element={<Category />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/cart" element={<CartContainer />} />
+            <Route path="/category/:category" element={<Category />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/chekout" element={<Checkout />} /> 
+            <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </Container>
+        <Footer />
       </div>
     </Router>
   );

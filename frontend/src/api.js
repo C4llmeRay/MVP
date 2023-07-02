@@ -105,33 +105,41 @@ export const getCart = async () => {
   }
 };
 
+
 // Add an item to the cart
-export const addToCart = async (productId) => {
+export const addToCart = async (productId, quantity = 1) => {
   try {
-    const response = await axios.post(`/carts${productId}`, null, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    const response = await axios.post(
+      `/carts`,
+      { productId, quantity },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response.data;
   }
 };
 
-// Remove an item from the cart
 export const removeFromCart = async (productId) => {
   try {
-    const response = await axios.delete(`/carts/remove/${productId}`, {
+    const token = localStorage.getItem('token');
+    const response = await axios.delete(`carts/${productId}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
   } catch (error) {
-    throw error.response.data;
+    throw error;
   }
 };
+
+
+
 
 
 export const getProductsByCategory = async (category) => {

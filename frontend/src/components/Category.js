@@ -11,10 +11,8 @@ const Category = () => {
     const fetchProducts = async () => {
   try {
     const response = await getProductsByCategory(category);
-    console.log(response); // inspect the response
     setProducts(response);
   } catch (error) {
-    console.error(error);
   }
 };
 

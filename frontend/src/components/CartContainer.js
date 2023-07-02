@@ -1,43 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Cart from './Cart';
-import { getCart } from '../api';
+import { getCart, removeFromCart } from '../api';
 
 const CartContainer = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartItemCount, setCartItemCount] = useState(0);
 
-  // Retrieve cart items and count from API
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
-
-  const fetchCartItems = async () => {
+  const fetchCartItems = useCallback(async () => {
     try {
-      const items = await getCart();
+      const cart = await getCart();
+      const items = cart.items || [];
       setCartItems(items);
       calculateCartItemCount(items);
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchCartItems();
+    };
+
+    fetchData();
+  }, [fetchCartItems]);
 
   const calculateCartItemCount = (items) => {
-    const count = items.length;
+    const count = items.length || 0;
     setCartItemCount(count);
   };
 
-  const removeFromCart = (itemId) => {
-    // Remove item from cart and update state
-    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
-    setCartItems(updatedCartItems);
-    calculateCartItemCount(updatedCartItems);
-  };
+  const handleRemoveFromCart = async (productId) => {
+  try {
+    await removeFromCart(productId);
+    fetchCartItems();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
-    <Cart cartItems={cartItems} cartItemCount={cartItemCount} removeFromCart={removeFromCart} />
+    <Cart cartItems={cartItems} cartItemCount={cartItemCount} removeFromCart={handleRemoveFromCart} />
   );
 };
 
 export default CartContainer;
+
+
+
+
+
 
 
