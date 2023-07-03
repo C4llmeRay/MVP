@@ -1,13 +1,27 @@
-.page-wrapper {
-    display: flex;
-    flex-direction: column;
+
+
+.app {
+    display: grid;
+    grid-template-rows: 1fr auto;
     min-height: 100vh;
 }
 
-.main-content {
-    flex-grow: 1;
+.content {
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+
 }
 
 .footer {
-    margin-top: auto;
+    padding: 20px;
+}
+
+@media(min-width: 1200px){
+.container{
+    max-width: 100%!important;
+}
 }

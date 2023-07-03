@@ -1,17 +1,11 @@
-.product-card {
-    width: 300px;
+.card {
     margin-bottom: 20px;
+    margin-right: 10px;
 }
 
-.card-img {
+.card-img-top {
     height: 200px;
     object-fit: cover;
-}
-
-.card-img-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
 }
 
 .card-title {
@@ -21,4 +15,12 @@
 
 .card-text {
     font-size: 14px;
+}
+
+.card-buttons {
+    margin-top: 10px;
+}
+
+.card:last-child {
+    margin-right: 0;
 }

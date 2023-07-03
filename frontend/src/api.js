@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken, saveToken } from "./authService";
+import { getToken, saveToken, } from "./authService";
 
 axios.defaults.baseURL = "http://localhost:4000/api";
 
@@ -22,6 +22,26 @@ export const loginUser = async (credentials) => {
     throw error.response.data;
   }
 };
+
+export const logoutUser = () => {
+  try {
+    // Remove the token from local storage
+    localStorage.removeItem('token');
+
+    // Optional: You can also remove any other user-related data from the client's storage if needed
+    // For example, if you store user information in localStorage, you can remove it with localStorage.removeItem('user')
+
+    // Redirect the user to the login page or any other desired page
+    window.location.href = '/login';
+
+    // Return a promise or any necessary data
+    return Promise.resolve({ message: "Logout successful" });
+  } catch (error) {
+    // Handle any error that may occur during the logout process
+    throw error;
+  }
+};
+
 
 // Fetch all products
 export const getProducts = async () => {
@@ -105,7 +125,6 @@ export const getCart = async () => {
   }
 };
 
-
 // Add an item to the cart
 export const addToCart = async (productId, quantity = 1) => {
   try {
@@ -120,6 +139,9 @@ export const addToCart = async (productId, quantity = 1) => {
     );
     return response.data;
   } catch (error) {
+    if (error.response && error.response.status === 401) {
+      alert("Please log in to use the cart");
+    }
     throw error.response.data;
   }
 };
@@ -137,10 +159,6 @@ export const removeFromCart = async (productId) => {
     throw error;
   }
 };
-
-
-
-
 
 export const getProductsByCategory = async (category) => {
   try {

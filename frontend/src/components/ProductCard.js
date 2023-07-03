@@ -13,25 +13,29 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="card bg-dark text-white product-card mx-2 my-2">
-      <img className="card-img" src={product.image} alt={product.title} />
-      <div className="card-img-overlay">
+    <div className="card" style={{ width: '18rem' }}>
+      <img className="card-img-top" src={product.image} alt={product.title} />
+      <div className="card-body">
         <h5 className="card-title">{product.name}</h5>
-        <p className="card-text">{product.description}</p>
-        <p className="card-text">Category: {product.category}</p>
-        <p className="card-text">Price: {product.price}</p>
-        <button className="btn btn-primary" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
-        <Link to={`/products/${product._id}`} className="btn btn-secondary">
-          View Details
-        </Link>
+        <p className="card-text">Price: ${product.price}</p>
+        <div className="card-buttons">
+          <button className="btn btn-primary" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <Link to={`/products/${product._id}`} className="btn btn-secondary">
+            View Details
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
 
 export default ProductCard;
+
+
+
+
 
 
 

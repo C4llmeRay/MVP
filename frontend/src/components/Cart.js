@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Cart.css'
 
 const Cart = ({ cartItems, cartItemCount, removeFromCart }) => {
   const handleRemoveFromCart = (itemId) => {
@@ -6,7 +8,7 @@ const Cart = ({ cartItems, cartItemCount, removeFromCart }) => {
   };
 
   return (
-    <div>
+    <div className='cart'>
       <h2>Cart</h2>
       <p>Item count: {cartItemCount}</p>
       <div className="card-deck">
@@ -21,11 +23,13 @@ const Cart = ({ cartItems, cartItemCount, removeFromCart }) => {
           </div>
         ))}
       </div>
+      <Link to="/checkout" className="btn btn-primary">Proceed to Checkout</Link>
     </div>
   );
 };
 
 export default Cart;
+
 
 
 

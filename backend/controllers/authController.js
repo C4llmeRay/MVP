@@ -99,6 +99,7 @@ const updateUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 // Get current user
 const getCurrentUser = async (req, res) => {
  let token = req.header('Authorization');
@@ -119,16 +120,6 @@ const getCurrentUser = async (req, res) => {
   }
 };
 
-// Logout user
-const logoutUser = async (req, res) => {
-  try {
-    req.session.destroy();
 
-    res.status(200).json({ message: 'Logout successful' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
 
-module.exports = {getUserById, registerUser, loginUser, updateUser,getCurrentUser, logoutUser};
+module.exports = {getUserById, registerUser, loginUser, updateUser,getCurrentUser};

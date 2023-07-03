@@ -22,8 +22,6 @@ router.get('/:id', AuthController.getUserById);
 
 // Update user by ID
 router.put('/:id', AuthController.updateUser);
-// Logout user
-router.post('/logout', AuthController.logoutUser);
 
 
 

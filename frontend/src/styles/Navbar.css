@@ -1,6 +1,8 @@
 .navbar {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 20px;
+    background-color: #e0dedb;
 }
 
 .navbar-nav {
@@ -22,3 +24,4 @@
     margin-left: auto;
     margin-right: 15px;
 }
+

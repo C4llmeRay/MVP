@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 import { loginUser } from '../api';
+import '../styles/Login.css'
 
 function Login() {
   const navigate = useNavigate();
@@ -18,40 +20,50 @@ function Login() {
       };
 
       await loginUser(credentials);
-      
+
       setMessage('Login successful');
 
       navigate('/profile');
     } catch (error) {
       setMessage('Login failed. Please try again.');
-
     }
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       {message && <p>{message}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" onClick={handleLogin}>Login</button>
-      </form>
+      <Form className="login-form" onSubmit={handleLogin} >
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+      </Form>
     </div>
   );
 }
 
 export default Login;
+
 
 
 

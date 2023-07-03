@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api';
 import ProductCard from './ProductCard';
-import '../styles/ProductCard.css';
+import '../styles/Products.css';
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -64,7 +64,7 @@ const Product = () => {
       </div>
       {Object.entries(groupedProducts).map(([category, products]) => (
         <div key={category}>
-          <h3>{category}</h3>
+          <h3 className="category-name">{category}</h3>
           <div className="d-flex flex-wrap">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
