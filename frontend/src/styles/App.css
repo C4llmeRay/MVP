@@ -8,12 +8,10 @@
 
 .content {
     padding-top: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    text-align: center;
     width: 100%;
     margin-bottom: 20px;
-
 }
 
 .footer {

@@ -8,7 +8,7 @@ const HomeCarousel = () => {
     <>
       <Carousel>
         <Carousel.Item>
-          <img className="d-block w-100" src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="First slide" />
+          <img className="d-block w-100" src="https://images.pexels.com/photos/1293006/pexels-photo-1293006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="First slide" />
           <Carousel.Caption>
             <h3>10% OFF YOUR FIRST ORDER</h3>
             <p>Reasonable Price and 10% OFF YOUR FIRST ORDER</p>
@@ -44,7 +44,7 @@ const HomeCarousel = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src="https://images.pexels.com/photos/6567356/pexels-photo-6567356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Fourth slide" />
+          <img className="d-block w-100" src="https://images.pexels.com/photos/974911/pexels-photo-974911.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Fourth slide" />
           <Carousel.Caption>
             <h3>Fashionable Dress</h3>
             <p>Shop trendy and fashionable dresses for every occasion</p>
