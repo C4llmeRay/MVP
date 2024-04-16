@@ -22,7 +22,8 @@ router.get("/:id", AuthController.getUserById);
 // Update user by ID
 router.put("/:id", AuthController.updateUser);
 
-//this is for push testing
+// Delete user by ID
+// router.delete("/:id", AuthController.deleteUser);
 
 module.exports = {
   routes: router,
